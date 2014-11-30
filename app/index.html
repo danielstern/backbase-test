@@ -50,14 +50,16 @@
                                 <img ng-src="{{item['media:content'].url}}" alt="{{item.title}}">
                             </div>
                             <div layout=row flex class=unit flex=60 class=action-block>
-                                <div flex flex=20>
+                                <div flex=80>
                                     <h3>{{item.title}}</h3>
                                 </div>
 
-                                <div flex flex=20 class='item-link'>
-                                    <a href="{{item.link}}" target=_new md-z1>
-                                    </a>
-                                </div>
+                                <a href="{{item.link}}" target=_new md-z1>    
+                                  <div flex flex=20 class='item-link'>
+                                      <a href="{{item.link}}" target=_new md-z1>
+                                      </a>
+                                  </div>
+                                </a>
                             </div>
                         </div>
                     </md-item>
