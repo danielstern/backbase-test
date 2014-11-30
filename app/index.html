@@ -13,14 +13,15 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/shim.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body>
+  <body ontouchstart="" ontouchend="">
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
+  
 
     <div class="container">
       <!-- <div class="header">
@@ -31,39 +32,54 @@
         </ul>
         <h3 class="text-muted">backbase test</h3>
       </div> -->
-
-      <div class="jumbotron">
-      <!-- I've used bindings here for a handsome loading screen -->
-        <h1>{{data.title}}</h1>
-        <!-- <p class="lead">{{data.description}}</p> -->
-        <!-- <p><a class="btn btn-lg btn-success" href="#">Splendid! <span class="glyphicon glyphicon-ok"></span></a></p> -->
+      <div class=loading-bar ng-class="{fade: progress===100}">
+      <md-whiteframe class="md-whiteframe-z5" layout layout-align="center center">
+      <md-progress-linear md-mode="determinate" ng-value="progress" md-buffer-value=100></md-progress-linear>
+      </md-whiteframe>
       </div>
 
-      <!-- Here I've used an ng-repeat because it makes short work of asynchronously loaded JSON objects. -->
 
-
-    <section class="md-whiteframe-z1 md-padding layout=column" style='max-width:600px'>
+    <section class="md-whiteframe-z1 md-padding" layout=column>
       
 
       <md-content>
+
           <md-list>
-            <md-card ng-repeat="item in data.items | limitTo:10">
-              <md-item-content>
-                <div class="md-tile-left">
-                    <img ng-src="{{item['media:content'].url}}" class="face" alt="{{item.title}}" style="width:140px;border:1px solid rgba(0,0,0,0.2); padding: 10px; margin: 10px;">
+          <md-toolbar>
+                <h2 class="md-toolbar-tools">
+                  <span>daniel stern app</span>
+                </h2>
+              </md-toolbar>
+            <md-item ng-repeat="item in data.items | limitTo:10" >
+              <!-- <md-item-content> -->
+              <div layout="flex" layout-sm="column" flex-md=70 flex-gt-md=50>
+                <div flex flex=30>
+                    <img ng-src="{{item['media:content'].url}}"  alt="{{item.title}}">
                 </div>
-                <div class="md-tile-content">
+                <div layout=row flex class=unit flex=60 class=action-block>
+                <div flex>
                   <h3>{{item.title}}</h3>
+                  <!-- <p>{{item.source.content}}</p> -->
                   <!-- <h4>{{item.who}}</h4> -->
                   <!-- <p> -->
                     <!-- {{item.notes}} -->
                   <!-- </p> -->
                 </div>
-                <md-button class="md-fab" aria-label="New document">
-                       <md-icon icon="/img/icons/ic_insert_drive_file_24px.svg" style="width: 24px; height: 24px;"></md-icon>
-                     </md-button>
-              </md-item-content>
-            </md-card>
+                  
+                  <div flex=20 class='item-link' layout-align=right>
+                    <a href="{{item.link}}" target=_new md-z1>
+                <!-- 
+                    <md-button class="md-fab" aria-label="New document" offset=5>
+                     <md-icon icon="/img/icons/ic_chevron_right_24px.svg" width=10px height=10></md-icon>
+                   </md-button> -->
+                        
+                    </a>
+                  </div>
+                </div>
+                </div>
+              <!-- </md-item-content> -->
+              <!-- <md-divider ng-if="!$last"></md-divider> -->
+            </md-item>
           </md-list>
         </md-content>
     </section>
@@ -78,12 +94,12 @@
         </a>
       </article> -->
 
-      <div class="footer">
+      <!-- <div class="footer">
        <a href="https://github.com/danielstern" target=_blank>
          
         <p><span class="glyphicon glyphicon-heart"></span>Daniel Stern</p>
        </a>
-      </div>
+      </div> -->
 
     </div>
 

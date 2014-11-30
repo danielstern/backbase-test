@@ -2,22 +2,25 @@
 // best of practices, it's 
 // perfectly ideal for sorting out this app.
 angular.module("BackbaseTestPipeApp",['ngMaterial'])
-.run(function($http,$rootScope,pipeUrl,$sce){
-	console.log("App initializing:: ", pipeUrl);
+.run(function($http,$rootScope,pipeUrl,$sce,$interval){
+	$rootScope.progress = 0;
+	var progressCount = $interval(function(){
+		$rootScope.progress +=0.1;
+	},20);
 
 	// Add a function to be called
 	$rootScope.trust = function(html_code) {
 	    return $sce.trustAsHtml(html_code);
 	}
 
+
 	$http.get(pipeUrl)
 	.then(function(data,res){
-
-		console.log("Got data from pipe:: ",data);
+		$interval.cancel(progressCount);
+		$rootScope.progress = 100;
 
 		$rootScope.data = data.data.value;
 
-		console.table(data.data.value.items.slice(0,10));
 
 		// Here we want to filter out the articles that don't have images.
 		$rootScope.data.items = $rootScope.data.items.filter(function(item){
@@ -26,7 +29,7 @@ angular.module("BackbaseTestPipeApp",['ngMaterial'])
 
 	},function(error){
 		// It's important to at least attempt to handle errors.
-		alert("Something went wrong. Please try again.");
+		// alert("Something went wrong. Please try again.");
 	})
 })
 // Here I've made pipe an angular value so it can be easily mocked for testing.
