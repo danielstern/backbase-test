@@ -1,7 +1,7 @@
 // Though using .run and $rootScope is not the 
 // best of practices, it's 
 // perfectly ideal for sorting out this app.
-angular.module("BackbaseTestPipeApp",[])
+angular.module("BackbaseTestPipeApp",['ngMaterial'])
 .run(function($http,$rootScope,pipeUrl,$sce){
 	console.log("App initializing:: ", pipeUrl);
 
@@ -14,7 +14,10 @@ angular.module("BackbaseTestPipeApp",[])
 	.then(function(data,res){
 
 		console.log("Got data from pipe:: ",data);
+
 		$rootScope.data = data.data.value;
+
+		console.table(data.data.value.items.slice(0,10));
 
 		// Here we want to filter out the articles that don't have images.
 		$rootScope.data.items = $rootScope.data.items.filter(function(item){

@@ -9,7 +9,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -23,37 +23,66 @@
 
 
     <div class="container">
-      <div class="header">
+      <!-- <div class="header">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
         <h3 class="text-muted">backbase test</h3>
-      </div>
+      </div> -->
 
       <div class="jumbotron">
       <!-- I've used bindings here for a handsome loading screen -->
         <h1>{{data.title}}</h1>
-        <p class="lead">{{data.description}}</p>
+        <!-- <p class="lead">{{data.description}}</p> -->
         <!-- <p><a class="btn btn-lg btn-success" href="#">Splendid! <span class="glyphicon glyphicon-ok"></span></a></p> -->
       </div>
 
-      <!-- Here I've used an ng-repeat because it makes short work of asynchronously loaded JSON objects, and of discussion -->
-      <article ng-repeat='item in data.items | limitTo:10'>
-        <!-- {{item}} -->
-        <!-- {{data?}} -->
-        <!-- <img ng-src="{{item['enclosure'].url}}" class=img-responsive> -->
-        <div class="media-block" ui-sref=detail({title:item.title}></div>
-        <h2>{{item.title}}</h2>
-        <img ng-src="{{item['media:content'].url || item['enclosure'].url}}" class=img-responsive>
-        <!-- <div ng-bind-html=trust(item.description)> -->
-          <!-- Hey there! -->
-        <!-- </div> -->
-      </article>
+      <!-- Here I've used an ng-repeat because it makes short work of asynchronously loaded JSON objects. -->
+
+
+    <section class="md-whiteframe-z1 md-padding layout=column" style='max-width:600px'>
+      
+
+      <md-content>
+          <md-list>
+            <md-card ng-repeat="item in data.items | limitTo:10">
+              <md-item-content>
+                <div class="md-tile-left">
+                    <img ng-src="{{item['media:content'].url}}" class="face" alt="{{item.title}}" style="width:140px;border:1px solid rgba(0,0,0,0.2); padding: 10px; margin: 10px;">
+                </div>
+                <div class="md-tile-content">
+                  <h3>{{item.title}}</h3>
+                  <!-- <h4>{{item.who}}</h4> -->
+                  <!-- <p> -->
+                    <!-- {{item.notes}} -->
+                  <!-- </p> -->
+                </div>
+                <md-button class="md-fab" aria-label="New document">
+                       <md-icon icon="/img/icons/ic_insert_drive_file_24px.svg" style="width: 24px; height: 24px;"></md-icon>
+                     </md-button>
+              </md-item-content>
+            </md-card>
+          </md-list>
+        </md-content>
+    </section>
+
+
+<!--       <article ng-repeat='item in data.items | limitTo:10'>
+        <a href="{{item.link}}" target=_blank>
+          
+        <div class="media-block"></div>
+          <h2>{{item.title}}</h2>
+          <img ng-src="{{item['media:content'].url || item['enclosure'].url}}" class=img-responsive>
+        </a>
+      </article> -->
 
       <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from Daniel</p>
+       <a href="https://github.com/danielstern" target=_blank>
+         
+        <p><span class="glyphicon glyphicon-heart"></span>Daniel Stern</p>
+       </a>
       </div>
 
     </div>
@@ -61,8 +90,11 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/hammerjs/hammer.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -77,18 +109,18 @@
     </script>
 
         <!-- build:js(.) scripts/plugins.js -->
-        <script src="bower_components/bootstrap/js/affix.js"></script>
-        <script src="bower_components/bootstrap/js/alert.js"></script>
-        <script src="bower_components/bootstrap/js/dropdown.js"></script>
-        <script src="bower_components/bootstrap/js/tooltip.js"></script>
-        <script src="bower_components/bootstrap/js/modal.js"></script>
-        <script src="bower_components/bootstrap/js/transition.js"></script>
-        <script src="bower_components/bootstrap/js/button.js"></script>
-        <script src="bower_components/bootstrap/js/popover.js"></script>
-        <script src="bower_components/bootstrap/js/carousel.js"></script>
-        <script src="bower_components/bootstrap/js/scrollspy.js"></script>
-        <script src="bower_components/bootstrap/js/collapse.js"></script>
-        <script src="bower_components/bootstrap/js/tab.js"></script>
+   <!--      // <script src="bower_components/bootstrap/js/affix.js"></script>
+        // <script src="bower_components/bootstrap/js/alert.js"></script>
+        // <script src="bower_components/bootstrap/js/dropdown.js"></script>
+        // <script src="bower_components/bootstrap/js/tooltip.js"></script>
+        // <script src="bower_components/bootstrap/js/modal.js"></script>
+        // <script src="bower_components/bootstrap/js/transition.js"></script>
+        // <script src="bower_components/bootstrap/js/button.js"></script>
+        // <script src="bower_components/bootstrap/js/popover.js"></script>
+        // <script src="bower_components/bootstrap/js/carousel.js"></script>
+        // <script src="bower_components/bootstrap/js/scrollspy.js"></script>
+        // <script src="bower_components/bootstrap/js/collapse.js"></script>
+        // <script src="bower_components/bootstrap/js/tab.js"></script> -->
         <!-- endbuild -->
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
