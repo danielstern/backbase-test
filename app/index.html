@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="no-js" ng-app=BackbaseTestPipeApp>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>backbase test</title>
     <meta name="description" content="">
@@ -16,91 +17,53 @@
     <link rel="stylesheet" href="styles/shim.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-  </head>
-  <body ontouchstart="" ontouchend="">
+</head>
+
+<body ontouchstart="" ontouchend="">
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-  
+
 
     <div class="container">
-      <!-- <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">backbase test</h3>
-      </div> -->
-      <div class=loading-bar ng-class="{fade: progress===100}">
-      <md-whiteframe class="md-whiteframe-z5" layout layout-align="center center">
-      <md-progress-linear md-mode="determinate" ng-value="progress" md-buffer-value=100></md-progress-linear>
-      </md-whiteframe>
-      </div>
+        <div class=loading-bar ng-class="{fade: progress===100}">
+            <md-whiteframe class="md-whiteframe-z5" layout layout-align="center center">
+                <md-progress-linear md-mode="determinate" ng-value="progress" md-buffer-value=100></md-progress-linear>
+            </md-whiteframe>
+        </div>
 
 
-    <section class="md-whiteframe-z1 md-padding" layout=column>
-      
+        <section class="md-whiteframe-z1 md-padding" layout=column>
 
-      <md-content>
 
-          <md-list>
-          <md-toolbar>
-                <h2 class="md-toolbar-tools">
+            <md-content>
+
+                <md-list>
+                    <md-toolbar>
+                        <h2 class="md-toolbar-tools">
                   <span>daniel stern app</span>
                 </h2>
-              </md-toolbar>
-            <md-item ng-repeat="item in data.items | limitTo:10" >
-              <!-- <md-item-content> -->
-              <div layout="flex" layout-sm="column" flex-md=70 flex-gt-md=50>
-                <div flex flex=30>
-                    <img ng-src="{{item['media:content'].url}}"  alt="{{item.title}}">
-                </div>
-                <div layout=row flex class=unit flex=60 class=action-block>
-                <div flex>
-                  <h3>{{item.title}}</h3>
-                  <!-- <p>{{item.source.content}}</p> -->
-                  <!-- <h4>{{item.who}}</h4> -->
-                  <!-- <p> -->
-                    <!-- {{item.notes}} -->
-                  <!-- </p> -->
-                </div>
-                  
-                  <div flex=20 class='item-link' layout-align=right>
-                    <a href="{{item.link}}" target=_new md-z1>
-                <!-- 
-                    <md-button class="md-fab" aria-label="New document" offset=5>
-                     <md-icon icon="/img/icons/ic_chevron_right_24px.svg" width=10px height=10></md-icon>
-                   </md-button> -->
-                        
-                    </a>
-                  </div>
-                </div>
-                </div>
-              <!-- </md-item-content> -->
-              <!-- <md-divider ng-if="!$last"></md-divider> -->
-            </md-item>
-          </md-list>
-        </md-content>
-    </section>
+                    </md-toolbar>
+                    <md-item ng-repeat="item in data.items | limitTo:10">
+                        <div layout="flex" layout-sm="column" flex-md=70 flex-gt-md=50 class=main-body>
+                            <div flex flex=30>
+                                <img ng-src="{{item['media:content'].url}}" alt="{{item.title}}">
+                            </div>
+                            <div layout=row flex class=unit flex=60 class=action-block>
+                                <div flex flex=20>
+                                    <h3>{{item.title}}</h3>
+                                </div>
 
-
-<!--       <article ng-repeat='item in data.items | limitTo:10'>
-        <a href="{{item.link}}" target=_blank>
-          
-        <div class="media-block"></div>
-          <h2>{{item.title}}</h2>
-          <img ng-src="{{item['media:content'].url || item['enclosure'].url}}" class=img-responsive>
-        </a>
-      </article> -->
-
-      <!-- <div class="footer">
-       <a href="https://github.com/danielstern" target=_blank>
-         
-        <p><span class="glyphicon glyphicon-heart"></span>Daniel Stern</p>
-       </a>
-      </div> -->
-
+                                <div flex flex=20 class='item-link'>
+                                    <a href="{{item.link}}" target=_new md-z1>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </md-item>
+                </md-list>
+            </md-content>
+        </section>
     </div>
 
 
@@ -114,33 +77,9 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
-
-        <!-- build:js(.) scripts/plugins.js -->
-   <!--      // <script src="bower_components/bootstrap/js/affix.js"></script>
-        // <script src="bower_components/bootstrap/js/alert.js"></script>
-        // <script src="bower_components/bootstrap/js/dropdown.js"></script>
-        // <script src="bower_components/bootstrap/js/tooltip.js"></script>
-        // <script src="bower_components/bootstrap/js/modal.js"></script>
-        // <script src="bower_components/bootstrap/js/transition.js"></script>
-        // <script src="bower_components/bootstrap/js/button.js"></script>
-        // <script src="bower_components/bootstrap/js/popover.js"></script>
-        // <script src="bower_components/bootstrap/js/carousel.js"></script>
-        // <script src="bower_components/bootstrap/js/scrollspy.js"></script>
-        // <script src="bower_components/bootstrap/js/collapse.js"></script>
-        // <script src="bower_components/bootstrap/js/tab.js"></script> -->
-        <!-- endbuild -->
-
-        <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/main.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
 </body>
+
 </html>
